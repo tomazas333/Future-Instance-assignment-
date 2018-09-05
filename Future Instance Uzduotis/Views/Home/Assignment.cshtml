@@ -1,0 +1,56 @@
+﻿@model Future_Instance_Uzduotis.Controllers.HomeController.AssignmentResult
+
+
+<h2>@ViewBag.Title</h2>
+
+
+@foreach (var TreeNumberList in Model.gottenVariables)
+{
+<p>
+    @{
+        bool firstTreeNumberVar = true;
+    }
+    @foreach (var TreeNumberVar in TreeNumberList)
+    {
+        if (firstTreeNumberVar)
+        {
+            @TreeNumberVar
+            firstTreeNumberVar = false;
+        }
+        else
+        {
+            @:  , @TreeNumberVar
+        }
+    }
+</p>
+}
+
+<div>
+    <p>Max sum: @Model.MaximumNumber</p>
+</div>
+<div>
+    <p>Paths for maximum sum:</p>
+
+    @foreach (var maxPath in Model.NumbersInLine)
+    {
+    <p>
+        @{
+            bool firstmaxPathVar = true;
+        }
+        @foreach (var maxPathVar in maxPath)
+        {
+            if (firstmaxPathVar)
+            {
+                @maxPathVar.Number
+                firstmaxPathVar = false;
+            }
+            else
+            {
+             @:  , @maxPathVar.Number
+            }
+
+        }
+    </p>
+    }
+   
+</div>
